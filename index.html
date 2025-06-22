@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>动态测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            display: none; /* 默认隐藏所有问题 */
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .active {
+            display: block; /* 只显示当前问题 */
+        }
+        button {
+            padding: 8px 15px;
+            margin-top: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #result {
+            display: none;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .progress {
+            margin-bottom: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress">问题 1/16</div>
+    
+    <!-- 问题容器 -->
+    <div id="quiz">
+        <div class="question active" id="q1">
+            <p>1.首先恭喜你找到了这里。接下来你将看到一份简短的问卷，由于作者本人编程知识的匮乏，这份问卷尽力简化了流程，出于写程序的方便而完全忽略了美观和所有的人性化设计，简而言之，它能顺利地出现在你眼前已经是谢天谢地了。完成它并不需要很长时间，但也不会有任何收获，如果你想退出，最好就在看完这句话后点击那个可爱的叉号，相信我，退出这份问卷并不会真的让你失去什么^^</p >
+            <label><input type="radio" name="q1" value="A"> 好的</label><br>
+            <button onclick="nextQuestion(1)">下一题</button>
+        </div>
+
+        <div class="question" id="q2">
+            <p>2. 现实中发生的很多事让你感到难以理解</p >
+            <label><input type="radio" name="q2" value="A"> 是</label><br>
+            <label><input type="radio" name="q2" value="B"> 否</label><br>
+            <button onclick="nextQuestion(2)">下一题</button>
+        </div>
+
+
+        <div class="question" id="q3">
+            <p>3. 你认为每个人活着都应该有确切的目标</p >
+            <label><input type="radio" name="q3" value="A"> 是</label><br>
+            <label><input type="radio" name="q3" value="B"> 否</label><br>
+            <button onclick="nextQuestion(3)">下一题</button>
+        </div>
+
+
+
+        <div class="question" id="q4">
+            <p>4. 你认为自己被其他人赋予了过于沉重的使命</p >
+            <label><input type="radio" name="q4" value="A"> 是</label><br>
+            <label><input type="radio" name="q4" value="B"> 否</label><br>
+            <button onclick="nextQuestion(4)">下一题</button>
+        </div>
+
+
+        <div class="question" id="q5">
+            <p>5. 你有时怀疑自己的选择是错的</p >
+            <label><input type="radio" name="q5" value="A"> 是</label><br>
+            <label><input type="radio" name="q5" value="B"> 否</label><br>
+            <button onclick="nextQuestion(5)">下一题</button>
+        </div>
+
+     <div class="question" id="q6">
+            <p>6. 你认为有时谎言是必要的</p >
+            <label><input type="radio" name="q6" value="A"> 是</label><br>
+            <label><input type="radio" name="q6" value="B"> 否</label><br>
+            <button onclick="nextQuestion(6)">下一题</button>
+        </div>
+
+     <div class="question" id="q7">
+            <p>7. 为了一部分人能更好地生存，另一部分人的牺牲是必要的</p >
+            <label><input type="radio" name="q7" value="A"> 是</label><br>
+            <label><input type="radio" name="q7" value="B"> 否</label><br>
+            <button onclick="nextQuestion(7)">下一题</button>
+        </div>
+
+     <div class="question" id="q8">
+            <p>8. 即使你是牺牲的那一部分？</p >
+            <label><input type="radio" name="q8" value="A"> 是</label><br>
+            <label><input type="radio" name="q8" value="B"> 否</label><br>
+            <label><input type="radio" name="q8" value="C"> 我不会是牺牲的那一部分</label><br>
+            <button onclick="nextQuestion(8)">下一题</button>
+        </div>
+
+     <div class="question" id="q9">
+            <p>9. 你到底在坚持什么？</p >
+            <label><input type="radio" name="q9" value="A"> ……</label><br>
+            <label><input type="radio" name="q9" value="B"> 我没有坚持任何东西</label><br>
+            <label><input type="radio" name="q9" value="C"> 我有我自己的选择</label><br>
+            <button onclick="nextQuestion(9)">下一题</button>
+        </div>
+
+     <div class="question" id="q10">
+            <p>10. 这世界上只有你自己值得信任</p >
+            <label><input type="radio" name="q10" value="A"> 是</label><br>
+            <label><input type="radio" name="q10" value="B"> 否</label><br>
+            <button onclick="nextQuestion(10)">下一题</button>
+        </div>
+
+     <div class="question" id="q11">
+            <p>11. 你有时觉得这世界真是疯了</p >
+            <label><input type="radio" name="q11" value="A"> 是</label><br>
+            <label><input type="radio" name="q11" value="B"> 否</label><br>
+            <button onclick="nextQuestion(11)">下一题</button>
+        </div>
+
+     <div class="question" id="q12">
+            <p>12. 世界明天就要毁灭了，你感到开心吗</p >
+            <label><input type="radio" name="q12" value="A"> 当然</label><br>
+            <label><input type="radio" name="q12" value="B"> 并不</label><br>
+            <label><input type="radio" name="q12" value="C"> 这不可能</label><br>
+            <button onclick="nextQuestion(12)">下一题</button>
+        </div>
+
+     <div class="question" id="q13">
+            <p>13. 这当然不可能，开个玩笑而已……也不是完全没可能，对吧……？</p >
+            <label><input type="radio" name="q13" value="A"> 你说得对</label><br>
+            <label><input type="radio" name="q13" value="B">别瞎说了，这就是根本不可能发生的事</label><br>
+            <button onclick="nextQuestion(13)">下一题</button>
+        </div>
+
+     <div class="question" id="q14">
+            <p>14. 我真不明白你</p >
+            <label><input type="radio" name="q14" value="A"> 没关系</label><br>
+            <label><input type="radio" name="q14" value="B"> 那最好</label><br>
+           <label><input type="radio" name="q14" value="C"> 我从没指望任何人理解我</label><br>
+            <button onclick="nextQuestion(14)">下一题</button>
+        </div>
+
+     <div class="question" id="q15">
+            <p>15. 你知道上面这些问题全都没有任何暗示/引导/训诫……之类的东西</p >
+            <label><input type="radio" name="q15" value="A"> 是</label><br>
+            <label><input type="radio" name="q15" value="B"> 否</label><br>
+            <label><input type="radio" name="q15" value="C"> 我不这样认为</label><br>
+            <button onclick="nextQuestion(15)">下一题</button>
+        </div>
+
+
+        <div class="question" id="q16">
+            <p>16. 就算有，那又怎样？反正这是最后一个问题了</p >
+            <label><input type="radio" name="q16" value="A"> 是</label><br>
+           <label><input type="radio" name="q16" value="B"> 否</label><br>
+            <label><input type="radio" name="q16" value="C"> ……我有别的选择吗</label><br>
+            <button onclick="showResult()">查看结果</button>
+        </div>
+
+
+
+
+
+    </div>
+
+    <!-- 结果页 -->
+    <div id="result">
+        <h2>测试结果</h2>
+        <p>你想得到什么样的答案呢？在最开始我就已经说过了，你不会有任何收获。不会。
+               哦，这不太严谨，你会收获一句生日快乐。无论如何，生日快乐！！</p >
+        <button onclick="resetTest()">重新测试</button>
+    </div>
+
+    <script>
+        const totalQuestions = 16; // 总问题数
+        
+        // 切换到下一题
+        function nextQuestion(currentQ) {
+            // 验证是否已选择答案
+            const selected = document.querySelector(`input[name="q${currentQ}"]:checked`);
+            if (!selected) {
+                alert("请选择一个答案！");
+                return;
+            }
+
+            // 隐藏当前问题
+            document.getElementById(`q${currentQ}`).classList.remove('active');
+            
+            // 显示下一问题（或结果）
+            if (currentQ < totalQuestions) {
+                document.getElementById(`q${currentQ+1}`).classList.add('active');
+                document.querySelector(".progress").textContent = `问题 ${currentQ+1}/${totalQuestions}`;
+            }
+        }
+
+        // 显示结果
+        function showResult() {
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("result").style.display = "block";
+        }
+
+        // 重置测试
+        function resetTest() {
+            // 隐藏结果
+            document.getElementById("result").style.display = "none";
+            
+            // 重置所有问题
+            document.querySelectorAll('.question').forEach(q => {
+                q.classList.remove('active');
+                q.querySelectorAll('input').forEach(input => input.checked = false);
+            });
+            
+            // 显示第一题
+            document.getElementById("q1").classList.add('active');
+            document.getElementById("quiz").style.display = "block";
+            document.querySelector(".progress").textContent = "问题 1/16";
+        }
+    </script>
+</body>
+</html>
